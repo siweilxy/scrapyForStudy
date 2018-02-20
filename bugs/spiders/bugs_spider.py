@@ -21,7 +21,7 @@ class DmozSpider(CrawlSpider):
     def parse(self, response):
         reload(sys)
         sys.setdefaultencoding('utf-8')
-        next_selector=response.xpath("//div/a//@href")
+        next_selector=response.xpath("//a/@href")
         for url in next_selector.extract():
             if re.match("http",url):
                 if not re.match('http://my.csdn.net*', url) \
@@ -30,10 +30,13 @@ class DmozSpider(CrawlSpider):
                         and not re.match('http://ask.csdn.net*', url) \
                         and not re.match('http://www.csdn.net*', url) \
                         and not re.match('http://download.csdn.net*',url) \
-                        and not re.match('huiyi.csdn.net*', url):
+                        and not re.match('http://huiyi.csdn.net*', url):
                     yield Request(urlparse.urljoin(response.url,url))
 
-        selector=response.xpath("//div/a")
+        selector=response.xpath("//a")
+        s1=response.xpath('//div/ul/li/a')
+
+        selector = selector+s1
         for s in selector:
             yield self.parse_item(s,response)
 

@@ -67,11 +67,11 @@ DOWNLOAD_DELAY = 1
 ITEM_PIPELINES = {
     'bugs.pipelines.BugsPipeline': 300,
 }
-LOG_LEVEL = "DEBUG"
+LOG_LEVEL = "WARNING"
 DEPTH_PRIORITY = 0.1
+SCHEDULER_DISK_QUEUE = 'scrapy.squeues.PickleFifoDiskQueue'
+SCHEDULER_MEMORY_QUEUE = 'scrapy.squeues.FifoMemoryQueue'
 
-#SCHEDULER_DISK_QUEUE = 'scrapy.squeues.PickleFifoDiskQueue'
-#SCHEDULER_MEMORY_QUEUE = 'scrapy.squeues.FifoMemoryQueue'
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
