@@ -22,8 +22,8 @@ NEWSPIDER_MODULE = 'bugs.spiders'
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
-
+CONCURRENT_REQUESTS = 100
+CONCURRENT_ITEMS = 500
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
@@ -67,8 +67,9 @@ DOWNLOAD_DELAY = 1
 ITEM_PIPELINES = {
     'bugs.pipelines.BugsPipeline': 300,
 }
-LOG_LEVEL = "INFO"
+LOG_LEVEL = "DEBUG"
 DEPTH_PRIORITY = 0.1
+
 #SCHEDULER_DISK_QUEUE = 'scrapy.squeues.PickleFifoDiskQueue'
 #SCHEDULER_MEMORY_QUEUE = 'scrapy.squeues.FifoMemoryQueue'
 # Enable and configure the AutoThrottle extension (disabled by default)
