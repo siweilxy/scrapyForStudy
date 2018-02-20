@@ -27,7 +27,8 @@ class BugsPipeline(object):
                     or re.match('javascript*',link)\
                     or re.match('http://ask.csdn.net*',link)\
                     or re.match('http://www.csdn.net*',link):
-                #logging.critical("link is not needed")
+                logging.critical("link is not needed")
+                logging.critical(link)
                 return item
             #if re.match('http://blog.csdn.net*',link):
                 #logging.critical("blog.csdn.net is needed")

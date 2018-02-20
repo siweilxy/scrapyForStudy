@@ -15,7 +15,7 @@ class DmozSpider(CrawlSpider):
     name = "dmoz"
     allowed_domains = ["csdn.net","blog.csdn.net"]
     start_urls = [
-        "https://www.csdn.net/"
+        "https://blog.csdn.net"
     ]
 
     def parse(self, response):
