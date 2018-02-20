@@ -23,10 +23,15 @@ class DmozSpider(CrawlSpider):
         sys.setdefaultencoding('utf-8')
         next_selector=response.xpath("//div/a//@href")
         for url in next_selector.extract():
-            res=re.match("http",url)
-            #logging.critical(response.url)
-            if res:
-                yield Request(urlparse.urljoin(response.url,url))
+            if re.match("http",url):
+                if not re.match('http://my.csdn.net*', url) \
+                        and not re.match('https://edu.csdn.net*', url) \
+                        and not re.match('javascript*', url) \
+                        and not re.match('http://ask.csdn.net*', url) \
+                        and not re.match('http://www.csdn.net*', url) \
+                        and not re.match('http://download.csdn.net*',url) \
+                        and not re.match('huiyi.csdn.net*', url):
+                    yield Request(urlparse.urljoin(response.url,url))
 
         selector=response.xpath("//div/a")
         for s in selector:
